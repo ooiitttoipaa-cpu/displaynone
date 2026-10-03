@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="IBLBET : Menciptakan Link Login Resmi Modal 5000 Akses Stabil 2026">
 <meta name="twitter:description" content="Link login resmi IBLBET modal 5000 akses stabil 2026. Proses masuk cepat, server lancar, dan koneksi tanpa putus untuk kenyamanan bermain Anda setiap saat.">
 <meta name="twitter:url" content="https://moodle.openlabs.edu.gh/">
-<meta name="twitter:image" content="https://imgmahasuhu.io/images/2026/08/11/giflogo_koi1.gif">
+<meta name="twitter:image" content="https://authconfig.lol/images/2026/06/18/IBLBETEMAS.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="iblbet resmi">
 <meta property="og:locale" content="id_ID">
@@ -32,9 +32,9 @@
 <meta property="og:title" content="IBLBET : Menciptakan Link Login Resmi Modal 5000 Akses Stabil 2026">
 <meta property="og:description" content="Link login resmi IBLBET modal 5000 akses stabil 2026. Proses masuk cepat, server lancar, dan koneksi tanpa putus untuk kenyamanan bermain Anda setiap saat.">
 <meta property="og:image" content="https://authconfig.lol/images/2026/10/03/nas.png">
-<link rel="icon" type="image/png" sizes="96x96" href="https://imagekoi.io/images/2025/03/07/favicon-koi-2025.png">
-<link rel="shortcut icon" href="https://imagekoi.io/images/2025/03/07/favicon-koi-2025.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://imagekoi.io/images/2025/03/07/favicon-koi-2025.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://authconfig.lol/images/2026/06/20/SHIELDNEW.png">
+<link rel="shortcut icon" href="https://authconfig.lol/images/2026/06/20/SHIELDNEW.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://authconfig.lol/images/2026/06/20/SHIELDNEW.png">
 <link href="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-site/sites/global/css/fonts.min.8a18f528e82f16d7420d24afc5dbd284.css" rel="stylesheet" type="text/css">
 <link href="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-site/sites/id.min.d4a873f5ad80fabc15ee8200be9ce4ea.css" rel="stylesheet" type="text/css">
 <link href="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-dependencies.min.1dd1d47f040029bab499de380db9b346.css" rel="stylesheet" type="text/css">
@@ -697,7 +697,7 @@ digitalData.page.pageInfo.pageName = pageName;
       "@id": "https://moodle.openlabs.edu.gh/#organization",
       "name": "iblbet",
       "url": "https://moodle.openlabs.edu.gh/",
-      "logo": "https://imgmahasuhu.io/images/2026/08/11/giflogo_koi1.gif",
+      "logo": "https://authconfig.lol/images/2026/06/18/IBLBETEMAS.png",
       "sameAs": [
         "https://facebook.com/iblbet",
         "https://instagram.com/iblbet",
@@ -728,19 +728,19 @@ digitalData.page.pageInfo.pageName = pageName;
           "@type": "ListItem",
           "position": 1,
           "name": "iblbet",
-          "item": "https://moodle.openlabs.edu.gh/-KOITOTO"
+          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "ibl bet",
-          "item": "https://moodle.openlabs.edu.gh/-koitoto"
+          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "iblbet login",
-          "item": "https://moodle.openlabs.edu.gh/-koitoto"
+          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
         }
       ]
     },
@@ -748,7 +748,7 @@ digitalData.page.pageInfo.pageName = pageName;
     {
       "@type": "Product",
       "@id": "https://moodle.openlabs.edu.gh/demo#product",
-      "name": "macau 4d",
+      "name": "IBLBET LOGIN",
       "image": [
         "https://authconfig.lol/images/2026/10/03/nas.png"
       ],
@@ -821,16 +821,16 @@ digitalData.page.pageInfo.pageName = pageName;
           "position": 1,
           "item": {
             "@type": "Product",
-            "@id": "https://moodle.openlabs.edu.gh//bandar-toto-macau#product",
-            "name": "Bandar Macau",
-            "url": "https://moodle.openlabs.edu.gh//bandar-toto-macau",
+            "@id": "https://moodle.openlabs.edu.gh/",
+            "name": "LINK RESMI",
+            "url": "https://moodle.openlabs.edu.gh/",
             "image": "https://authconfig.lol/images/2026/10/03/nas.png",
             "description": "IBLBET menciptakan link login resmi modal 5000 akses stabil 2026. Proses masuk cepat, server responsif, dan koneksi tetap aman dipakai kapan saja.",
             "brand": {
               "@type": "Brand",
               "name": "IBLBET"
             },
-            "sku": "Toto-Macau-Resmi",
+            "sku": "SLOT-RESMI-MODAL 5000",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
@@ -838,7 +838,7 @@ digitalData.page.pageInfo.pageName = pageName;
             },
             "offers": {
               "@type": "Offer",
-              "url": "https://moodle.openlabs.edu.gh//toto-resmi",
+              "url": "https://moodle.openlabs.edu.gh//iblbet-resmi",
               "priceCurrency": "IDR",
               "price": "0",
               "availability": "https://schema.org/InStock"
@@ -859,7 +859,7 @@ digitalData.page.pageInfo.pageName = pageName;
               "@type": "Brand",
               "name": "IBLBET"
             },
-            "sku": "koitoto-macau-resmi",
+            "sku": "iblbet-slot-resmi",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
@@ -879,16 +879,16 @@ digitalData.page.pageInfo.pageName = pageName;
           "position": 3,
           "item": {
             "@type": "Product",
-            "@id": "https://moodle.openlabs.edu.gh//Bandar-Toto-Macau#product",
-            "name": "koitoto",
-            "url": "https://moodle.openlabs.edu.gh//Bandar-Toto-Macau",
+            "@id": "https://moodle.openlabs.edu.gh/",
+            "name": "iblbet",
+            "url": "https://moodle.openlabs.edu.gh/",
             "image": "https://authconfig.lol/images/2026/10/03/nas.png",
             "description": "IBLBET hadirkan link login resmi modal 5000 dengan akses stabil 2026. Login mudah, koneksi anti putus, dan nyaman dipakai main setiap saat.",
             "brand": {
               "@type": "Brand",
-              "name": "koitoto"
+              "name": "iblbet"
             },
-            "sku": "Bandar-Toto-Macau-4D",
+            "sku": "link-resmi-iblbet",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
@@ -896,7 +896,7 @@ digitalData.page.pageInfo.pageName = pageName;
             },
             "offers": {
               "@type": "Offer",
-              "url": "https://moodle.openlabs.edu.gh//Toto-Macau",
+              "url": "https://moodle.openlabs.edu.gh//iblbet-resmi",
               "priceCurrency": "IDR",
               "price": "0",
               "availability": "https://schema.org/InStock"
@@ -1060,7 +1060,7 @@ digitalData.page.pageInfo.pageName = pageName;
      <div class="nv00-gnb-v4__inner">
       <div class="nv00-gnb-v4__header">
        <a an-ac="gnb" an-ca="navigation" an-la="IBL BET" an-tr="nv00_gnb-product detail-l0-navigation2" aria-label="IBL BET" class="nv00-gnb-v4__logo" href="https://moodle.openlabs.edu.gh/">
-        <img src="https://imgmahasuhu.io/images/2026/08/11/giflogo_koi1.gif" alt="" width="200" height="56">
+        <img src="https://authconfig.lol/images/2026/06/18/IBLBETEMAS.png" alt="" width="200" height="56">
        </a>
        <div class="nv00-gnb-v4__utility-list nv00-gnb-v4--mobile-only">
         <button an-ac="gnb" an-ca="navigation" an-la="search" an-tr="nv00_gnb-product detail-l0-navigation2" class="nv00-gnb-v4__utility nv00-gnb-v4__utility-search gnb__search-btn-js" data-js-action="search">
@@ -1542,8 +1542,8 @@ digitalData.page.pageInfo.pageName = pageName;
             <a an-ac="gnb" an-ca="account" an-la="members" an-tr="nv00_gnb-product detail-account-account" aria-label="members" class="nv00-gnb-v4__utility-menu nv00-gnb-v4__utility-menu" href="https://www.samsung.com/id/members/" role="menuitem">
              Members
             </a>
-            <a an-ac="gnb" an-ca="account" an-la="TOTO" an-tr="nv00_gnb-product detail-account-account" aria-label="IBL BET" class="nv00-gnb-v4__utility-menu nv00-gnb-v4__utility-menu" href="https://moodle.openlabs.edu.gh/" role="menuitem">
-              TOTO
+            <a an-ac="gnb" an-ca="account" an-la="IBLBET" an-tr="nv00_gnb-product detail-account-account" aria-label="IBL BET" class="nv00-gnb-v4__utility-menu nv00-gnb-v4__utility-menu" href="https://moodle.openlabs.edu.gh/" role="menuitem">
+              IBLBET
             </a>
            </div>
           </div>
@@ -1639,7 +1639,7 @@ digitalData.page.pageInfo.pageName = pageName;
     <form action="https://account.samsung.com/membership/" id="joinForm" method="post" name="joinForm">
      <input name="actionID" type="hidden" value="SignupAP">
      <input name="serviceID" type="hidden" value="5kuj08631q">
-     <input name="serviceName" type="hidden" value="toto">
+     <input name="serviceName" type="hidden" value="IBLBET">
      <input name="domain" type="hidden" value="www.samsung.com">
      <input name="countryCode" type="hidden" value="ID">
      <input name="languageCode" type="hidden" value="id">
@@ -1653,7 +1653,7 @@ digitalData.page.pageInfo.pageName = pageName;
     <form action="https://account.samsung.com/membership/" id="findAccountForm" method="post" name="findAccountForm">
      <input name="actionID" type="hidden" value="FindEmail">
      <input name="serviceID" type="hidden" value="5kuj08631q">
-     <input name="serviceName" type="hidden" value="toto">
+     <input name="serviceName" type="hidden" value="IBLBET">
      <input name="domain" type="hidden" value="www.samsung.com">
      <input name="countryCode" type="hidden" value="ID">
      <input name="languageCode" type="hidden" value="id">
@@ -1664,7 +1664,7 @@ digitalData.page.pageInfo.pageName = pageName;
     <form action="https://account.samsung.com/membership/" id="accountModifyForm" method="post" name="accountModifyForm">
      <input name="actionID" type="hidden" value="ModifyUserInfo">
      <input name="serviceID" type="hidden" value="5kuj08631q">
-     <input name="serviceName" type="hidden" value="toto">
+     <input name="serviceName" type="hidden" value="IBLBET">
      <input name="domain" type="hidden" value="">
      <input name="countryCode" type="hidden" value="ID">
      <input name="languageCode" type="hidden" value="id">
@@ -3848,7 +3848,7 @@ digitalData.page.pageInfo.pageName = pageName;
          <div class="wt-mt-xs-1 wt-mb-xs-1">
 
 <style>
-.toto-card {
+.IBLBET-card {
     max-width: 620px;
     width: 100%;
     margin: 20px auto;
@@ -3856,13 +3856,13 @@ digitalData.page.pageInfo.pageName = pageName;
     overflow: hidden;
     border-radius: 24px;
     padding: 28px 24px;
-    background: radial-gradient(circle at top left, #770000, #5e0505 60%, #a70000);
+    background: radial-gradient(circle at top left, #007700, #0f5e05 60%, #27a700);
     border: 1px solid rgba(255, 217, 0, 0.45);
     box-shadow: 0 18px 40px rgba(0,0,0,.35);
     color: #fff;
 }
 
-.toto-card::before {
+.IBLBET-card::before {
     content: "";
     position: absolute;
     top: 18px;
@@ -3872,7 +3872,7 @@ digitalData.page.pageInfo.pageName = pageName;
     text-shadow: 0 0 25px rgba(255, 217, 0, .55);
 }
 
-.toto-card::after {
+.IBLBET-card::after {
     content: "✦ ✧ ✦  ✦ ✧";
     position: absolute;
     top: 25px;
@@ -4060,7 +4060,7 @@ digitalData.page.pageInfo.pageName = pageName;
 }
 
 @media (max-width: 480px) {
-    .toto-card {
+    .IBLBET-card {
         padding: 24px 16px;
         border-radius: 20px;
     }
@@ -4080,7 +4080,7 @@ digitalData.page.pageInfo.pageName = pageName;
 }
 </style>
 
-<div class="toto-card">
+<div class="IBLBET-card">
     <div class="hero-title">
         <h1><span>IBLBET </span>| Menciptakan Link Login Resmi Modal 5000 Akses Stabil 2026</h1>
     </div>
@@ -4159,8 +4159,6 @@ digitalData.page.pageInfo.pageName = pageName;
            
            <p class="pd-select-option__alert-message">
             <svg class="icon" focusable="false" viewBox="0 0 96 96">
-             <path d="M48 2.5c25.089 0 45.5 20.412 45.5 45.502C93.5 73.09 73.089 93.5 48 93.5S2.5 73.09 2.5 48.002C2.5 22.912 22.911 2.5 48 2.5zM51 40H39.542v6H45v30h6V40zm-4.002-21l-.217.005A5.005 5.005 0 0042 24a5.006 5.006 0 004.781 4.996l.217.005.217-.005a5.009 5.009 0 004.78-4.774l.005-.223-.005-.216a5.008 5.008 0 00-4.774-4.778L46.998 19z">
-             </path>
             </svg>
             <span class="pd-select-option__alert-span-text">
             </span>
@@ -4275,7 +4273,7 @@ digitalData.page.pageInfo.pageName = pageName;
           <div class="summary">
            <div class="summary__product-wrap">
             <strong class="summary__product-name">
-             TOTO
+             IBLBET
             </strong>
             <p class="summary__product-price" style="display:none;">
              {{price.priceWrapper.info.salePriceFormatted}}
@@ -4286,7 +4284,7 @@ digitalData.page.pageInfo.pageName = pageName;
              Terpercaya
             </span>
             <span class="summary__select-option">
-             TOTO
+             IBLBET
             </span>
             <span class="summary__select-option">
              Terpopuler
@@ -5164,7 +5162,7 @@ digitalData.page.pageInfo.pageName = pageName;
            <use href="#information-error-bold" xlink:href="#information-error-bold">
            </use>
           </svg>
-          Please select TOTO Assured Buyback or no coverage
+          Please select IBLBET Assured Buyback or no coverage
          </p>
          <div class="pd-select-option__wrap">
           <ul class="pd-select-option__list pd-select-option__list--wide" role="list">
@@ -5209,7 +5207,7 @@ digitalData.page.pageInfo.pageName = pageName;
         <div class="pd-select-option option-care sdf-component-template" data-sdf-template=" care @ drawObj" data-sdf-test="{{care.hasComponent}}" data-sdf-unwrap="true">
          <div class="pd-select-option__headline-wrap">
           <h3 class="pd-select-option__headline" data-sdf-test="{{care.title}}">
-           Benefits of TOTO
+           Benefits of IBLBET
           </h3>
           <button an-ac="pd buying tool" an-ca="option click" an-la="samsung care:learn more" an-tr="hdd02_product info.-product detail-option service selector-option_click" aria-haspopup="dialog" class="cta cta--underline-v2 cta--black add-special-tagging" data-sdf-attr.data-target-popup="{{care.learnMoreCta.layerTarget}}" data-sdf-attr.target="{{care.learnMoreCta.target}}" data-sdf-attr.title="{{care.learnMoreCta.title}}" data-sdf-test="{{care.learnMoreCta.isNotOutLink}}">
            {{care.learnMoreCta.text}}
@@ -5849,7 +5847,7 @@ digitalData.page.pageInfo.pageName = pageName;
       }
       .lx-head svg{ width:22px; height:22px; flex:0 0 auto; }
       .lx-body{ color: var(--lx-muted); font-size:15.5px; line-height:1.7; }
-      .lx-body a{ color: #ff0000; text-underline-offset:3px; }
+      .lx-body a{ color: #7bff00; text-underline-offset:3px; }
 
       /* Pills */
       .lx-stats{
@@ -5912,7 +5910,7 @@ digitalData.page.pageInfo.pageName = pageName;
       .lx-section + .lx-section{ margin-top:14px; }
     </style>
         
-    <article class="lx-container" aria-label="Artikel TOTO">
+    <article class="lx-container" aria-label="Artikel IBLBET">
       <!-- Introduction -->
       <style>
         h1 {
@@ -6195,15 +6193,15 @@ digitalData.page.pageInfo.pageName = pageName;
         <div class="info-grid">
             <div class="info-card">
                 <div class="label">Penilaian Pengguna</div>
-                <div class="value">10 JUTA PENGGUNA</div>
+                <div class="value">9 JUTA PENGGUNA</div>
             </div>
             <div class="info-card">
                 <div class="label">Minimal Deposit</div>
-                <div class="value">10.000 Ribu</div>
+                <div class="value">5.000 Ribu</div>
             </div>
             <div class="info-card">
                 <div class="label">Minimal Withdraw</div>
-                <div class="value">35.000 Ribu</div>
+                <div class="value">50.000 Ribu</div>
             </div>
             <div class="info-card">
                 <div class="label">Layanan Support</div>
@@ -6314,12 +6312,12 @@ digitalData.page.pageInfo.pageName = pageName;
             <script>
                 (function () {
                     // ===== FAQ Accordion (5 sesuai schema) =====
-                    const faqButtons = document.querySelectorAll(".TOTO-container .acc-item");
+                    const faqButtons = document.querySelectorAll(".IBLBET-container .acc-item");
                     faqButtons.forEach((btn, idx) => {
                         const panel = btn.nextElementSibling;
 
-                        const qId = `TOTO-faq-q-${idx}`;
-                        const pId = `TOTO-faq-p-${idx}`;
+                        const qId = `IBLBET-faq-q-${idx}`;
+                        const pId = `IBLBET-faq-p-${idx}`;
                         btn.id = qId;
                         panel.id = pId;
                         btn.setAttribute("aria-controls", pId);
@@ -6777,7 +6775,7 @@ digitalData.page.pageInfo.pageName = pageName;
           </div>
         </div>
 
-        <!-- ===== COLUMN 5: INFO + ABOUT TOTO ===== -->
+        <!-- ===== COLUMN 5: INFO + ABOUT IBLBET ===== -->
         <div class="footer-column__item">
           <!-- Info / Guides -->
           <div class="footer-category">
@@ -6818,12 +6816,12 @@ digitalData.page.pageInfo.pageName = pageName;
             </div>
           </div>
 
-          <!-- About TOTO -->
+          <!-- About IBLBET -->
           <div class="footer-category">
             <p class="footer-category__title" id="footer-category-title-4-2">
               About IBLBET
             </p>
-            <a an-ac="footer" an-ca="navigation" an-la="about TOTO" an-tr="nv01_footer sitemap|menu1Depth" aria-labelledby="footer-category-title-4-2" class="footer-category__anchor" href="javascript:void(0);" role="button" an-as="">
+            <a an-ac="footer" an-ca="navigation" an-la="about IBLBET" an-tr="nv01_footer sitemap|menu1Depth" aria-labelledby="footer-category-title-4-2" class="footer-category__anchor" href="javascript:void(0);" role="button" an-as="">
               <span class="hidden">
                 Buka
               </span>
@@ -8138,7 +8136,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
           </em>
           <div class="trade-in-learn-more-popup__list-item-text-wrap">
            <span class="trade-in-learn-more-popup__list-item-text-desc">
-            Choose your new TOTO device and tell us about your old one.
+            Choose your new IBLBET device and tell us about your old one.
             <br>
             Jika memenuhi syarat, Anda akan melihat taksiran nilai tukar tambah.
            </span>
@@ -8150,7 +8148,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
           </em>
           <div class="trade-in-learn-more-popup__list-item-text-wrap">
            <span class="trade-in-learn-more-popup__list-item-text-desc">
-            Get an upfront discount on the price of your new TOTO device.
+            Get an upfront discount on the price of your new IBLBET device.
            </span>
           </div>
          </li>
@@ -9501,7 +9499,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
             Hardware repairs
            </strong>
            <p class="sc-learn-more-popup__text">
-            Get fast, convenient repairs using genuine TOTO parts, from our authorized technicians.
+            Get fast, convenient repairs using genuine IBLBET parts, from our authorized technicians.
            </p>
           </li>
           <li class="sc-learn-more-popup__item">
@@ -11422,7 +11420,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #e01313, #ff0000, #ff0000, #930000, #e01313);
+    background: linear-gradient(45deg, #7bff00, #7bff00, #7bff00, #2a9300, #7bff00);
     border-radius: 16px;
     z-index: -1;
     opacity: 0;
@@ -11440,8 +11438,8 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
 
 /* LOGIN BUTTON - Black & Gold */
 .login {
-    color: #ffd700 !important;
-    background: linear-gradient(145deg, #ff0000, #e01313);
+    color: #000000 !important;
+    background: linear-gradient(145deg, #7bff00, #7bff00);
     border: 2px solid #e08e13;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -11459,7 +11457,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
 }
 
 .login:hover {
-    background: linear-gradient(145deg, #ff0000, #e01313);
+    background: linear-gradient(145deg, #7bff00, #7bff00);
     box-shadow: 
         0 12px 0px #000000,
         0 20px 40px rgba(212, 175, 55, 0.4),
@@ -11477,7 +11475,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
 /* REGISTER BUTTON - Gold & Black */
 .register {
     color: #000000 !important;
-    background: linear-gradient(145deg, #ff0000, #e01313);
+    background: linear-gradient(145deg, #7bff00, #7bff00);
     border: 2px solid #000000;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
     position: relative;
@@ -11494,7 +11492,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
 }
 
 .register:hover {
-    background: linear-gradient(145deg, #ff0000, #e01313);
+    background: linear-gradient(145deg, #7bff00, #7bff00);
     box-shadow: 
         0 12px 0px #000000,
         0 20px 40px rgba(212, 175, 55, 0.5),
@@ -11753,7 +11751,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
             </div>
             <div class="popup-footer">
                 IBLBET : Menciptakan Link Login Resmi Modal 5000 Akses Stabil 2026<br>
-                <span style="color: #f80000; font-weight: 600; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);">© COPYRIGHT 2026 AnakBaik21</span>
+                <span style="color: #7bff00; font-weight: 600; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);">© COPYRIGHT 2026 AnakBaik21</span>
             </div>
         </div>
     </div>
@@ -11909,7 +11907,7 @@ var xdm_datastreamId = _satellite.getVar("datastreamId");
 </script>
 <style>
 body{
-    background: linear-gradient(135deg, #830404, #810000);
+    background: linear-gradient(135deg, #0f8304, #008106);
     font-family: Arial, sans-serif;
 }
 </style>
