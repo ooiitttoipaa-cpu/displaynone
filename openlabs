@@ -695,7 +695,7 @@ digitalData.page.pageInfo.pageName = pageName;
     {
       "@type": "Organization",
       "@id": "https://moodle.openlabs.edu.gh/#organization",
-      "name": "iblbet",
+      "name": "IBLBET",
       "url": "https://moodle.openlabs.edu.gh/",
       "logo": "https://authconfig.lol/images/2026/06/18/IBLBETEMAS.png",
       "sameAs": [
@@ -710,13 +710,6 @@ digitalData.page.pageInfo.pageName = pageName;
         "contactType": "customer support",
         "availableLanguage": ["id", "en"],
         "areaServed": "ID"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "954638",
-        "bestRating": "5",
-        "worstRating": "1"
       }
     },
 
@@ -728,26 +721,26 @@ digitalData.page.pageInfo.pageName = pageName;
           "@type": "ListItem",
           "position": 1,
           "name": "iblbet",
-          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
+          "item": "https://moodle.openlabs.edu.gh/iblbet"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "ibl bet",
-          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
+          "item": "https://moodle.openlabs.edu.gh/ibl-bet"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "iblbet login",
-          "item": "https://moodle.openlabs.edu.gh/-IBLBET"
+          "item": "https://moodle.openlabs.edu.gh/iblbet-login"
         }
       ]
     },
 
     {
       "@type": "Product",
-      "@id": "https://moodle.openlabs.edu.gh/demo#product",
+      "@id": "https://moodle.openlabs.edu.gh/#product",
       "name": "IBLBET LOGIN",
       "image": [
         "https://authconfig.lol/images/2026/10/03/nas.png"
@@ -755,15 +748,15 @@ digitalData.page.pageInfo.pageName = pageName;
       "description": "IBLBET menciptakan link login resmi modal 5000 akses stabil 2026. Masuk lebih gampang, server anti lag, dan koneksi tetap lancar tanpa putus saat dipakai main.",
       "brand": {
         "@type": "Brand",
-        "name": "iblbet"
+        "name": "IBLBET"
       },
-      "sku": "Link-Resmi-iblbet",
+      "sku": "IBLBET-LOGIN-2026",
       "category": "iblbet",
       "url": "https://moodle.openlabs.edu.gh/",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "954638",
+        "ratingCount": "2",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -805,7 +798,7 @@ digitalData.page.pageInfo.pageName = pageName;
         "@type": "Offer",
         "url": "https://moodle.openlabs.edu.gh/",
         "priceCurrency": "IDR",
-        "price": "0",
+        "price": "5000",
         "availability": "https://schema.org/InStock"
       }
     },
@@ -821,26 +814,26 @@ digitalData.page.pageInfo.pageName = pageName;
           "position": 1,
           "item": {
             "@type": "Product",
-            "@id": "https://moodle.openlabs.edu.gh/",
-            "name": "LINK RESMI",
-            "url": "https://moodle.openlabs.edu.gh/",
+            "@id": "https://moodle.openlabs.edu.gh/#product-1",
+            "name": "IBLBET Login Resmi",
+            "url": "https://moodle.openlabs.edu.gh/iblbet-resmi",
             "image": "https://authconfig.lol/images/2026/10/03/nas.png",
             "description": "IBLBET menciptakan link login resmi modal 5000 akses stabil 2026. Proses masuk cepat, server responsif, dan koneksi tetap aman dipakai kapan saja.",
             "brand": {
               "@type": "Brand",
               "name": "IBLBET"
             },
-            "sku": "SLOT-RESMI-MODAL 5000",
+            "sku": "IBLBET-SLOT-5000",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "ratingCount": "954638"
+              "ratingCount": "2"
             },
             "offers": {
               "@type": "Offer",
-              "url": "https://moodle.openlabs.edu.gh//iblbet-resmi",
+              "url": "https://moodle.openlabs.edu.gh/iblbet-resmi",
               "priceCurrency": "IDR",
-              "price": "0",
+              "price": "5000",
               "availability": "https://schema.org/InStock"
             }
           }
@@ -850,8 +843,8 @@ digitalData.page.pageInfo.pageName = pageName;
           "position": 2,
           "item": {
             "@type": "Product",
-            "@id": "https://moodle.openlabs.edu.gh//#product",
-            "name": "LINK RESMI",
+            "@id": "https://moodle.openlabs.edu.gh/#product-2",
+            "name": "Link Alternatif IBLBET",
             "url": "https://moodle.openlabs.edu.gh/",
             "image": "https://authconfig.lol/images/2026/10/03/nas.png",
             "description": "Link login resmi IBLBET modal 5000 akses stabil 2026. Dapatkan kemudahan masuk, server lancar, dan pengalaman main tanpa hambatan tiap hari.",
@@ -859,17 +852,17 @@ digitalData.page.pageInfo.pageName = pageName;
               "@type": "Brand",
               "name": "IBLBET"
             },
-            "sku": "iblbet-slot-resmi",
+            "sku": "IBLBET-ALTERNATIF",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "ratingCount": "954638"
+              "ratingCount": "2"
             },
             "offers": {
               "@type": "Offer",
               "url": "https://moodle.openlabs.edu.gh/",
               "priceCurrency": "IDR",
-              "price": "0",
+              "price": "5000",
               "availability": "https://schema.org/InStock"
             }
           }
@@ -879,26 +872,26 @@ digitalData.page.pageInfo.pageName = pageName;
           "position": 3,
           "item": {
             "@type": "Product",
-            "@id": "https://moodle.openlabs.edu.gh/",
-            "name": "iblbet",
-            "url": "https://moodle.openlabs.edu.gh/",
+            "@id": "https://moodle.openlabs.edu.gh/#product-3",
+            "name": "IBLBET Resmi",
+            "url": "https://moodle.openlabs.edu.gh/iblbet-resmi",
             "image": "https://authconfig.lol/images/2026/10/03/nas.png",
             "description": "IBLBET hadirkan link login resmi modal 5000 dengan akses stabil 2026. Login mudah, koneksi anti putus, dan nyaman dipakai main setiap saat.",
             "brand": {
               "@type": "Brand",
-              "name": "iblbet"
+              "name": "IBLBET"
             },
-            "sku": "link-resmi-iblbet",
+            "sku": "IBLBET-RESMI-2026",
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "ratingCount": "954638"
+              "ratingCount": "2"
             },
             "offers": {
               "@type": "Offer",
-              "url": "https://moodle.openlabs.edu.gh//iblbet-resmi",
+              "url": "https://moodle.openlabs.edu.gh/iblbet-resmi",
               "priceCurrency": "IDR",
-              "price": "0",
+              "price": "5000",
               "availability": "https://schema.org/InStock"
             }
           }
